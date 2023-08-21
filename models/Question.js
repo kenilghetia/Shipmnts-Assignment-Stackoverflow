@@ -5,7 +5,7 @@ const questionSchema = new mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     required: true,
   },
-  ques: {
+  question: {
     type: String,
     required: true,
   },
