@@ -13,8 +13,7 @@ Bonus: Search, Sorting questions
 
 ## Project Documentation:
 1. MVC Structure is followed for writing quality code.
-We have various directories. config folder contains configuration files.
-middlewares
+We have various directories. config folder contains configuration files. middlewares contains all required middlewares including JWT.
 2. We have 3 models one for user details, one for all questions that contains all answers in form of an array and one for storing all answers.
 3. Once user register using email and password, user details are stored in user_details where password is stored in encrypted form.
 4. user can then register using email and password, a JWT token is generated to keep track of user
