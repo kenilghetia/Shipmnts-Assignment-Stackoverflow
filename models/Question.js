@@ -1,22 +1,32 @@
 const mongoose = require("mongoose");
 
 const questionSchema = new mongoose.Schema({
-  ques: {
-    type: String,
-    required: true,
-  },
   created_by: {
     type: mongoose.Schema.Types.ObjectId,
+    required: true,
+  },
+  ques: {
+    type: String,
     required: true,
   },
   answers: [
     {
       type: mongoose.Schema.Types.ObjectId,
       ref: "answer_details",
-    }
+    },
   ],
+  comments: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "comment_details",
+    },
+  ],
+  votes: {
+    type: Number,
+    default: 0,
+  },
 });
 
 const questionDetails = mongoose.model("question_details", questionSchema);
 
-module.exports = UserDetails;
+module.exports = questionDetails;
