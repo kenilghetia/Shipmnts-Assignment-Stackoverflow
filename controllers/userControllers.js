@@ -134,14 +134,35 @@ module.exports = {
   updateQuestion: async (req, res) => {
     try {
       const { questionId } = req.params;
-      const { title, content } = req.body;
-    } catch (error) {}
+      const { question } = req.body;
+
+      const x = await questionDetails.findByIdAndUpdate(
+        questionId,
+        { question },
+        { new: true }
+      );
+      return res
+        .status(200)
+        .send({ statuscode: sc.OK.code, message: sc.OK.message, data: x });
+    } catch (error) {
+      return res.status(500).send({
+        statuscode: sc.Internal_Server_Error.code,
+        message: sc.Internal_Server_Error.message,
+        data: error,
+      });
+    }
   },
 
   deleteQuestion: async (req, res) => {
     try {
       const { questionId } = req.params;
-      const { title, content } = req.body;
-    } catch (error) {}
+      const x = await questionDetails.findByIdAndDelete(questionId);
+    } catch (error) {
+      return res.status(500).send({
+        statuscode: sc.Internal_Server_Error.code,
+        message: sc.Internal_Server_Error.message,
+        data: error,
+      });
+    }
   },
 };
