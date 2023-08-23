@@ -11,15 +11,15 @@ router.get("/getall", JWTVerification,userControllers.getAllQuestions);
 router.put("/update/:questionId", JWTVerification, userControllers.updateQuestion);
 router.delete("/delete/:questionId", JWTVerification, userControllers.deleteQuestion);
 
+// Upvote a question
+app.put("/questions/:questionId/upvote", JWTVerification, userControllers.Qupvote);
+
+// Downvote a question
+app.put("/questions/:questionId/downvote", JWTVerification, userControllers.Qdownvote);
 
 
 
 
-// // Upvote a question
-// app.put("/questions/:questionId/upvote", JWTVerification, userControllers.upvote);
-
-// // Downvote a question
-// app.put("/questions/:questionId/downvote", JWTVerification, userControllers.downvote);
 
 // // Upvote an answer
 // app.put("/answers/:answerId/upvote", JWTVerification, userControllers.upvote);

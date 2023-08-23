@@ -165,4 +165,36 @@ module.exports = {
       });
     }
   },
+
+  Qupvote: async (req, res) => {
+    try {
+      const { questionId } = req.params;
+      const x = await questionDetails.findById(questionId);
+
+      x.votes++;
+      await x.save();
+    } catch (error) {
+      return res.status(500).send({
+        statuscode: sc.Internal_Server_Error.code,
+        message: sc.Internal_Server_Error.message,
+        data: error,
+      });
+    }
+  },
+
+  Qdownvote: async (req, res) => {
+    try {
+      const { questionId } = req.params;
+      const x = await questionDetails.findById(questionId);
+
+      x.votes--;
+      await x.save();
+    } catch (error) {
+      return res.status(500).send({
+        statuscode: sc.Internal_Server_Error.code,
+        message: sc.Internal_Server_Error.message,
+        data: error,
+      });
+    }
+  },
 };
